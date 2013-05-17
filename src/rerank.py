@@ -11,7 +11,7 @@ def get_best_hypothesis(refNum):
     (bestScore, bestHyp) = (-1e300, '')
     for (hyp, feat, bleuScore) in K_BEST_SENTS[refNum].values():
         score = 0.
-        newFeat = feat + features.add_features(SRC_SENTS[refNum], hyp)
+        newFeat = features.add_features(SRC_SENTS[refNum], hyp) + feat
         for w, f in zip(W, newFeat):
             score += w * f
             
